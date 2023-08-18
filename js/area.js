@@ -35,6 +35,13 @@ function calculateRectangleArea (){
      const length = parseFloat(lengthValueText);
      console.log(length);
 
+      //  validate input
+
+      if(isNaN(width)|| isNaN(length)){
+        alert('Please insert a number');
+        return;
+      }
+
       // Calculate area
 
       const area = width * length;
@@ -56,6 +63,12 @@ function calculateRectangleArea (){
       console.log(base);
       const height = getInputValue ('Parallelogram-height');
       console.log(height);
+
+       // validate
+       if(isNaN(base)|| isNaN(height)){
+        alert('Please insert a number')
+        return;
+       }
 
        // // Calculate area
        const area = base * height;
@@ -91,4 +104,3 @@ function calculateRectangleArea (){
 
    // data validate
 
-   
