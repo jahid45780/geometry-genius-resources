@@ -3,6 +3,7 @@ function calculateTriangleArea (){
    const baseField = document.getElementById('Triangle-base');
    const baseValueText = baseField.value;
    const base = parseFloat(baseValueText);
+   baseField.value='';
    console.log(base);
   
    // get triangle height value
@@ -12,6 +13,7 @@ function calculateTriangleArea (){
    const hight = parseFloat( hightValueText);
    console.log (hight);
 
+    heightField.value='';
 
    const area = 0.5 * base * hight ;
    console.log(area); 
@@ -20,6 +22,8 @@ function calculateTriangleArea (){
     const areaSpan = document.getElementById('Triangle-area');
     areaSpan.innerText = area;
 
+    addToCalculationEntry('Triangle', area)
+
 };
 
 function calculateRectangleArea (){
@@ -27,12 +31,14 @@ function calculateRectangleArea (){
     const widthField = document.getElementById('rectangle-width');
     const widthValueText = widthField.value;
     const width = parseFloat(widthValueText);
+    widthField.value='';
     console.log(width);
 
      // get Rectangle length
      const lengthField = document.getElementById('rectangle-length');
      const lengthValueText = lengthField.value;
      const length = parseFloat(lengthValueText);
+     lengthField.value='';
      console.log(length);
 
       //  validate input
@@ -52,7 +58,7 @@ function calculateRectangleArea (){
   const areaSpan = document.getElementById('rectangle-area');
   areaSpan.innerText = area;
 
-
+  addToCalculationEntry('rectangle', area)
 
 };
 
@@ -73,6 +79,10 @@ function calculateRectangleArea (){
        // // Calculate area
        const area = base * height;
        setElementInnerText('Parallelogram-area',area);
+
+        // add to calculation entry
+        addToCalculationEntry('Parallelogram', area)
+
  };
 
 
@@ -81,6 +91,8 @@ function calculateRectangleArea (){
      const minorRadius = getInputValue('ellipse-minor-radius');
      const area = 3.14 * majorRadius * minorRadius;
      setElementInnerText ('ellipse-area', area);
+
+     addToCalculationEntry('ellipse', area)
  };
 
 
@@ -102,5 +114,20 @@ function calculateRectangleArea (){
             element.innerText = area;
   };
 
-   // data validate
+   // add to calculation entry
+
+   function addToCalculationEntry(areaType, area){
+      console.log(areaType+ ' ' +area)
+      const CalculationEntry = document.getElementById('calculation-entry');
+
+      const count = CalculationEntry.childElementCount
+
+      const p= document.createElement('p')
+      p.classList.add('my-3');
+      p.innerHTML = `
+       ${count}. ${areaType} ${area} cm<sup>2</sup> <button class= "btn btn-sm btn-success" >Convert</button>
+      
+      `;
+      CalculationEntry.appendChild(p);
+   }; 
 
