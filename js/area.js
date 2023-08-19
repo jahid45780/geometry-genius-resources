@@ -17,12 +17,19 @@ function calculateTriangleArea (){
 
    const area = 0.5 * base * hight ;
    console.log(area); 
+  
     // show triangle area
 
     const areaSpan = document.getElementById('Triangle-area');
     areaSpan.innerText = area;
 
     addToCalculationEntry('Triangle', area)
+
+      // validate
+      if(isNaN(base)|| isNaN(height)){
+        alert('Please insert a number')
+        return;
+       }
 
 };
 
@@ -92,8 +99,30 @@ function calculateRectangleArea (){
      const area = 3.14 * majorRadius * minorRadius;
      setElementInnerText ('ellipse-area', area);
 
+
      addToCalculationEntry('ellipse', area)
+
+   
+    
+      
  };
+
+  //  Pentagon js
+  function calculatePentagonArea(){
+
+    const perimeter = getInputValue('pentagon-perimeter');
+    const base = getInputValue('pentagon-base');
+    const area = 0.5 * perimeter * base;
+    setElementInnerText('pentagon-area',area);
+    addToCalculationEntry('pentagon', area)
+    
+     // validate
+     if(isNaN(base)|| isNaN(height)){
+      alert('Please insert a number')
+      return;
+     }
+    
+  }
 
 
  // get reusable input field and number
